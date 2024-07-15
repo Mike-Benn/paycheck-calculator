@@ -1,0 +1,59 @@
+/*   Variables   */
+
+:root {
+    --generator-font-color: #36454F;
+    --generator-backgr-color: #FBFBFB;
+    --generator-border-color: #A0A0A0;
+    --submit-btn-backgr-color: #00A676;
+    --preview-backgr-color: #eaeaea;
+    --list-item-color: #7600a6;
+    --preview-primary-element-color: #00457E;
+    --preview-backgr-color: #eaeaea;
+    --preview-list-item-color: #4d4d4d;
+    --overlay-button-backgr-color: #9a00d7;
+
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.page-container {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    padding: 2rem;
+    justify-content: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    border: 1px solid black;
+}
+
+.field {
+    position: relative;
+    display: flex;
+    gap: 1rem;
+
+}
+
+.field-label {
+    position: absolute;
+    transform: translate(1rem , -50%);
+    background-color: var(--generator-backgr-color);
+    padding: 2px 5px;
+    
+}
+
+.text-input {
+    flex-grow: 1;
+    padding: 12px;
+    border: 2px solid var(--generator-border-color);
+    border-radius: 5px;
+    background-color: var(--generator-backgr-color);
+    
+}
