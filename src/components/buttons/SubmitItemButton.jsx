@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 function SubmitItemButton({ buttonText = "Placeholder" , onClickAction }) {
     
     return (
-        <div className="field">
+        <div className="button-field">
             <button type="button" className="submit-btn" onClick={onClickAction}>{buttonText}</button>
         </div>
     )

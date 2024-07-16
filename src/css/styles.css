@@ -23,9 +23,16 @@
     display: flex;
     align-items: center;
     flex-direction: column;
-    padding-top: 2rem;
+    padding: 2rem 0rem;
     gap: 2rem;
 
+}
+
+.form-section {
+    display: flex;
+    padding: 2rem;
+    flex-direction: column;
+    gap: 1.5rem;
 }
 
 .field-label {
@@ -48,5 +55,9 @@
     display: flex;
     gap: 1rem;
     flex-direction: column;
+}
+
+.button-field {
+    align-self: center;
 }
 
