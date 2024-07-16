@@ -1,4 +1,6 @@
 import PropTypes from 'prop-types'
+import edit from '../../images/edit.png'
+
 
 function EditListItemButton({ id = null , onEdit = null }) {
 
@@ -8,7 +10,7 @@ function EditListItemButton({ id = null , onEdit = null }) {
 
     return (
         <>
-            <button key={id} type="button" className={"list-item-edit-btn"} onClick={handleEdit}><img src="" alt='Edit (Writing Utensil) button)' className='list-button-image'/></button>
+            <button key={id} type="button" className={"list-item-edit-btn"} onClick={handleEdit}><img src={edit} alt='Edit (Writing Utensil) button)' className='list-button-image'/></button>
         </>
     )
 }

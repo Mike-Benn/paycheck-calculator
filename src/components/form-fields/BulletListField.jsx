@@ -6,7 +6,7 @@ function BulletListField({ fieldNames , listeners, values , bonusList , classIde
     
     let forValBonus = fieldNames.Bonus.split(' ').join('');
     let forValQuantity = fieldNames.Quantity.split(' ').join('');
-
+    
 
     const enterPressed = (e) => {
         if (e.key === 'Enter') {
@@ -36,7 +36,7 @@ function BulletListField({ fieldNames , listeners, values , bonusList , classIde
                     name={forValQuantity} 
                     id={forValQuantity}
                     className='text-input'
-                    onChange={listeners.handleQuantityChange}
+                    onChange={listeners.handleMultiplierChange}
                     value={values.Quantity}
                     onKeyDown={enterPressed}
                     />
