@@ -32,7 +32,7 @@ function calculatePaycheck(id , paycheckValues , rates) {
     
 
     let currGrossPay = basePay + overtimePay + weekendPay + nightShiftPay + bonusTotal;
-    let currNetPay = currGrossPay * userRates.taxRate;
+    let currNetPay = Math.round(currGrossPay * userRates.taxRate);
 
     return {currGrossPay , currNetPay}
     
