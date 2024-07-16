@@ -17,13 +17,36 @@
 * {
     margin: 0;
     padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+li {
+    list-style-type: none;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+
+
+.page-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 2rem 0rem;
+}
+
+header {
+    align-self: center;
 }
 
 .calculator-form {
     display: flex;
     align-items: center;
     flex-direction: column;
-    padding: 2rem 0rem;
     gap: 2rem;
 
 }
@@ -57,7 +80,45 @@
     flex-direction: column;
 }
 
+
 .button-field {
     align-self: center;
 }
+
+
+.general-list-item {
+    display: flex;
+    justify-content: space-between;
+    border: 2px solid var(--list-item-color);
+    border-radius: 5px;
+    padding: 0.5rem 0.5rem;
+    gap: 1rem;
+    box-sizing: border-box;
+    align-items: center;
+
+}
+
+.general-list-item > p {
+    font-size: .8rem;
+}
+
+.list-button-container {
+    display: flex;
+    gap: 0.25rem;
+}
+
+.list-item-button {
+    box-sizing: border-box;
+    padding: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.list-button-image {
+    width: 12px;
+    height: auto;
+}
+
 

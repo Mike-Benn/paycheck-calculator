@@ -10,7 +10,7 @@ function DeleteListItemButton({ id = null , onDelete = null }) {
 
     return (
         <>
-            <button key={id} type="button" className={"list-item-delete-btn"} onClick={handleClose}><img src={x} alt='Delete (X button)' className='list-button-image'/></button>
+            <button key={id} type="button" className={"list-item-button"} onClick={handleClose}><img src={x} alt='Delete (X button)' className='list-button-image'/></button>
         </>
     )
 }

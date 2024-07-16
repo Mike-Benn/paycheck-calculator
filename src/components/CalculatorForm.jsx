@@ -1,8 +1,9 @@
 import { useState } from "react";
-import SmallTextField from "./form-fields/SmallTextField";
+import NumberField from "./form-fields/NumberField";
 import BulletListField from "./form-fields/BulletListField";
 import { v4 as uuidv4 } from "../../node_modules/uuid"
-import { getItemWithID } from "../utils/utils";
+import { calculatePaycheck, getItemWithId } from "../utils/utils";
+import { payRates } from "../utils/rates";
 
 function CalculatorForm() {
 
@@ -13,6 +14,18 @@ function CalculatorForm() {
     const [currBonus , setCurrBonus] = useState("");
     const [currBonusMultiplier , setCurrBonusMultiplier] = useState("");
     const [currBonusList , setCurrBonusList] = useState([]);
+    const paycheckValues = {
+        regularHours: currRegularHours,
+        overtimeHours: currOvertimeHours,
+        nightShiftHours: currNightShiftHours,
+        weekendHours: currWeekendHours,
+        bonusList: currBonusList,
+    }
+    const selectedId = "kermit";
+    const pay = calculatePaycheck(selectedId , paycheckValues , payRates)
+
+    
+
 
     const handleRegularHoursChange = (e) => {
         setCurrRegularHours(e.target.value);
@@ -44,12 +57,13 @@ function CalculatorForm() {
     }
 
     const handleSubmitBonus = () => {
-        let profile = {
+        let bonus = {
             id: uuidv4(),
             amount: currBonus,
             quantity: currBonusMultiplier,
         }
-        let updatedBonusList = currBonusList.concat([profile]);
+        
+        let updatedBonusList = currBonusList.concat([bonus]);
         setCurrBonusList(updatedBonusList);
         resetBonusForm();
     }
@@ -62,10 +76,9 @@ function CalculatorForm() {
     }
 
     const handleEditBonus = (id) => {
-        let bonusObject = getItemWithID(id , currBonusList);
+        let bonusObject = getItemWithId(id , currBonusList);
         let bonus = bonusObject.item;
         let bonusProfileList = bonusObject.arr;
-
         setCurrBonus(bonus.amount);
         setCurrBonusMultiplier(bonus.quantity);
         setCurrBonusList(bonusProfileList);
@@ -81,31 +94,33 @@ function CalculatorForm() {
     }
 
     const bulletFieldValues = {
-        Bonus: currBonus,
-        Quantity: currBonusMultiplier,
+        bonus: currBonus,
+        quantity: currBonusMultiplier,
     }
 
-    const bonusFieldNames = {
-        "Bonus": "Bonus",
-        "Quantity": "Quantity",
-
-    }
-
+    
+    
     return (
         <form action="" className="calculator-form">
             <fieldset className="form-section">
                 <legend className="form-header">Hourly Pay</legend>
-                <SmallTextField fieldName="Regular Hours" onInputChange={handleRegularHoursChange} value={currRegularHours}/>
-                <SmallTextField fieldName="Overtime Hours" onInputChange={handleOvertimeHoursChange} value={currOvertimeHours}/>
-                <SmallTextField fieldName="Night Shift Hours" onInputChange={handleNightShiftHoursChange} value={currNightShiftHours}/>
-                <SmallTextField fieldName="Weekend Hours" onInputChange={handleWeekendHoursChange} value={currWeekendHours}/>
+                <NumberField fieldName="Regular Hours" onInputChange={handleRegularHoursChange} value={currRegularHours} readOnly={false}/>
+                <NumberField fieldName="Overtime Hours" onInputChange={handleOvertimeHoursChange} value={currOvertimeHours} readOnly={false}/>
+                <NumberField fieldName="Night Shift Hours" onInputChange={handleNightShiftHoursChange} value={currNightShiftHours} readOnly={false}/>
+                <NumberField fieldName="Weekend Hours" onInputChange={handleWeekendHoursChange} value={currWeekendHours} readOnly={false}/>
             </fieldset>
             <fieldset className="form-section">
                 <legend className="form-header">Bonuses</legend>
-                <BulletListField fieldNames={bonusFieldNames} listeners={bulletFieldListeners} values={bulletFieldValues} bonusList={currBonusList} classIdentifier="bonus-list" />
+                <BulletListField listeners={bulletFieldListeners} values={bulletFieldValues} bonusList={currBonusList} classIdentifier="bonus-list" />
+            </fieldset>
+            <fieldset className="form-section">
+                <legend className="form-header">Gross and Net Pay</legend>
+                <NumberField fieldName="Gross Pay" value={pay.currGrossPay} readOnly={true} />
+                <NumberField fieldName="Net Pay" value={pay.currNetPay} readOnly={true} />
+
             </fieldset>
             
-            <SmallTextField fieldName="Net Pay" />
+            <NumberField fieldName="Net Pay" />
             
         </form>
     )

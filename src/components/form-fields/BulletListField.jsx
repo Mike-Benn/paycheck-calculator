@@ -1,13 +1,11 @@
 import PropTypes from 'prop-types'
 import GeneralUnorderedList from '../lists/GeneralUnorderedList';
 import SubmitItemButton from '../buttons/SubmitItemButton';
+import NumberField from './NumberField';
 
-function BulletListField({ fieldNames , listeners, values , bonusList , classIdentifier }) {
-    
-    let forValBonus = fieldNames.Bonus.split(' ').join('');
-    let forValQuantity = fieldNames.Quantity.split(' ').join('');
-    
 
+function BulletListField({ listeners, values , bonusList , classIdentifier }) {
+    
     const enterPressed = (e) => {
         if (e.key === 'Enter') {
             listeners.handleSubmitBonus();
@@ -18,31 +16,9 @@ function BulletListField({ fieldNames , listeners, values , bonusList , classIde
         
         <div className="bullet-field">
             <GeneralUnorderedList bonusList={bonusList} className={classIdentifier} listeners={listeners}/>
-            <div className="field">
-                <label htmlFor={forValBonus} className="field-label">{fieldNames.Bonus}</label>
-                <input 
-                    type="text"
-                    name={forValBonus}
-                    id={forValBonus}
-                    className='text-input'
-                    onChange={listeners.handleBonusChange}
-                    value={values.Bonus}
-                    />
-            </div>
-            <div className="field">
-                <label htmlFor={forValQuantity} className="field-label">{fieldNames.Quantity}</label>
-                <input 
-                    type="text" 
-                    name={forValQuantity} 
-                    id={forValQuantity}
-                    className='text-input'
-                    onChange={listeners.handleMultiplierChange}
-                    value={values.Quantity}
-                    onKeyDown={enterPressed}
-                    />
-            </div>
+            <NumberField fieldName="Bonus" onInputChange={listeners.handleBonusChange} value={values.bonus} readOnly={false}/>
+            <NumberField fieldName="Quantity" onInputChange={listeners.handleMultiplierChange} value={values.quantity} onKeyDown={enterPressed} readOnly={false}/>
             <SubmitItemButton buttonText='Add Bonus' onClickAction={listeners.handleSubmitBonus}/>
-            
         </div>
         
     )

@@ -7,6 +7,9 @@ function App() {
 
   return (
     <div className="page-container">
+      <header className="main-header">
+        <h1>Paycheck Calculator</h1>
+      </header>
       <CalculatorForm />
     </div>
   )
