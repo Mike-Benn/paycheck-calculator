@@ -93,11 +93,18 @@ function CalculatorForm() {
 
     return (
         <form action="" className="calculator-form">
-            <SmallTextField fieldName="Regular Hours" onInputChange={handleRegularHoursChange} value={currRegularHours}/>
-            <SmallTextField fieldName="Overtime Hours" onInputChange={handleOvertimeHoursChange} value={currOvertimeHours}/>
-            <SmallTextField fieldName="Night Shift Hours" onInputChange={handleNightShiftHoursChange} value={currNightShiftHours}/>
-            <SmallTextField fieldName="Weekend Hours" onInputChange={handleWeekendHoursChange} value={currWeekendHours}/>
-            <BulletListField fieldNames={bonusFieldNames} listeners={bulletFieldListeners} values={bulletFieldValues} bonusList={currBonusList} classIdentifier="bonus-list" />
+            <fieldset className="form-section">
+                <legend className="form-header">Hourly Pay</legend>
+                <SmallTextField fieldName="Regular Hours" onInputChange={handleRegularHoursChange} value={currRegularHours}/>
+                <SmallTextField fieldName="Overtime Hours" onInputChange={handleOvertimeHoursChange} value={currOvertimeHours}/>
+                <SmallTextField fieldName="Night Shift Hours" onInputChange={handleNightShiftHoursChange} value={currNightShiftHours}/>
+                <SmallTextField fieldName="Weekend Hours" onInputChange={handleWeekendHoursChange} value={currWeekendHours}/>
+            </fieldset>
+            <fieldset className="form-section">
+                <legend className="form-header">Bonuses</legend>
+                <BulletListField fieldNames={bonusFieldNames} listeners={bulletFieldListeners} values={bulletFieldValues} bonusList={currBonusList} classIdentifier="bonus-list" />
+            </fieldset>
+            
             <SmallTextField fieldName="Net Pay" />
             
         </form>

@@ -19,13 +19,34 @@
     padding: 0;
 }
 
+.calculator-form {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 2rem;
+    gap: 2rem;
 
+}
 
 .field-label {
     position: absolute;
     transform: translate(1rem , -50%);
-    background-color: var(--generator-backgr-color);
+    background-color: white;
     padding: 2px 5px;
     
+    
+}
+
+.text-input {
+    padding: 1rem;
+    border-radius: 5px;
+    border: solid 1px black;
+    
+}
+
+.bullet-field {
+    display: flex;
+    gap: 1rem;
+    flex-direction: column;
 }
 
