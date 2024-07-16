@@ -1,6 +1,8 @@
 import { useState } from "react";
 import SmallTextField from "./form-fields/SmallTextField";
 import BulletListField from "./form-fields/BulletListField";
+import { v4 as uuidv4 } from "../../node_modules/uuid"
+import { getItemWithID } from "../utils/utils";
 
 function CalculatorForm() {
 
@@ -36,9 +38,45 @@ function CalculatorForm() {
         setCurrBonusMultiplier(e.target.value);
     }
 
+    const resetBonusForm = () => {
+        setCurrBonus("");
+        setCurrBonusMultiplier("");
+    }
+
+    const handleSubmitBonus = () => {
+        let profile = {
+            id: uuidv4(),
+            amount: currBonus,
+            quantity: currBonusMultiplier,
+        }
+        let updatedBonusList = currBonusList.concat([profile]);
+        setCurrBonusList(updatedBonusList);
+        resetBonusForm();
+    }
+
+    const handleDeleteBonus = (id) => {
+        let updatedBonusList = currBonusList.filter(item =>
+            id !== item.id
+        );
+        setCurrBonusList(updatedBonusList);
+    }
+
+    const handleEditBonus = (id) => {
+        let bonusObject = getItemWithID(id , currBonusList);
+        let bonus = bonusObject.item;
+        let bonusProfileList = bonusObject.arr;
+
+        setCurrBonus(bonus.amount);
+        setCurrBonusMultiplier(bonus.quantity);
+        setCurrBonusList(bonusProfileList);
+    }
+
     const bulletFieldListeners = {
         handleBonusChange,
         handleMultiplierChange,
+        handleSubmitBonus,
+        handleDeleteBonus,
+        handleEditBonus,
 
     }
 
@@ -47,13 +85,19 @@ function CalculatorForm() {
         Quantity: currBonusMultiplier,
     }
 
+    const bonusFieldNames = {
+        "Bonus": "Bonus",
+        "Quantity": "Quantity",
+
+    }
+
     return (
         <form action="" className="calculator-form">
             <SmallTextField fieldName="Regular Hours" onInputChange={handleRegularHoursChange} value={currRegularHours}/>
             <SmallTextField fieldName="Overtime Hours" onInputChange={handleOvertimeHoursChange} value={currOvertimeHours}/>
             <SmallTextField fieldName="Night Shift Hours" onInputChange={handleNightShiftHoursChange} value={currNightShiftHours}/>
             <SmallTextField fieldName="Weekend Hours" onInputChange={handleWeekendHoursChange} value={currWeekendHours}/>
-            <BulletListField fieldName={{"Bonus": "Bonus" , "Quantity": "Quantity"}} onInputChange={bulletFieldListeners} values={bulletFieldValues} itemList={currBonusList} classIdentifier="bonus-list" />
+            <BulletListField fieldNames={bonusFieldNames} listeners={bulletFieldListeners} values={bulletFieldValues} bonusList={currBonusList} classIdentifier="bonus-list" />
             <SmallTextField fieldName="Net Pay" />
             
         </form>

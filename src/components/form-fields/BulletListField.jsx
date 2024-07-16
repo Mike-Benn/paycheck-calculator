@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types'
-import UnorderedList from '../lists/UnorderedList';
+import GeneralUnorderedList from '../lists/GeneralUnorderedList';
 import SubmitItemButton from '../buttons/SubmitItemButton';
 
-function BulletListField({ fieldNames , onInputChange , onAddChange , values , itemList , classIdentifier }) {
+function BulletListField({ fieldNames , listeners, values , bonusList , classIdentifier }) {
     
     let forValBonus = fieldNames.Bonus.split(' ').join('');
     let forValQuantity = fieldNames.Quantity.split(' ').join('');
@@ -10,14 +10,14 @@ function BulletListField({ fieldNames , onInputChange , onAddChange , values , i
 
     const enterPressed = (e) => {
         if (e.key === 'Enter') {
-            onAddChange();
+            listeners.handleSubmitBonus();
         }
     }
 
     return (
         
         <div className="bullet-field">
-            <UnorderedList itemList={itemList} className={classIdentifier} />
+            <GeneralUnorderedList bonusList={bonusList} className={classIdentifier} listeners={listeners}/>
             <div className="field">
                 <label htmlFor={forValBonus} className="field-label">{fieldNames.Bonus}</label>
                 <input 
@@ -25,7 +25,7 @@ function BulletListField({ fieldNames , onInputChange , onAddChange , values , i
                     name={forValBonus}
                     id={forValBonus}
                     className='text-input'
-                    onChange={onInputChange.handleBonusChange}
+                    onChange={listeners.handleBonusChange}
                     value={values.Bonus}
                     />
             </div>
@@ -36,11 +36,12 @@ function BulletListField({ fieldNames , onInputChange , onAddChange , values , i
                     name={forValQuantity} 
                     id={forValQuantity}
                     className='text-input'
-                    onChange={onInputChange.handleQuantityChange}
+                    onChange={listeners.handleQuantityChange}
                     value={values.Quantity}
+                    onKeyDown={enterPressed}
                     />
             </div>
-            <SubmitItemButton buttonText='Add Bonus'/>
+            <SubmitItemButton buttonText='Add Bonus' onClickAction={listeners.handleSubmitBonus}/>
             
         </div>
         
@@ -51,9 +52,9 @@ BulletListField.propTypes = {
     classIdentifier: PropTypes.string,
     fieldNames: PropTypes.object,
     values: PropTypes.object,
-    onInputChange: PropTypes.object,
+    listeners: PropTypes.object,
     onAddChange: PropTypes.func,
-    itemList: PropTypes.arrayOf(PropTypes.node),
+    bonusList: PropTypes.arrayOf(PropTypes.object),
     
     
     
