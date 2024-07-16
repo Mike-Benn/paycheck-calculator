@@ -16,8 +16,8 @@ function BulletListField({ listeners, values , bonusList , classIdentifier }) {
         
         <div className="bullet-field">
             <GeneralUnorderedList bonusList={bonusList} className={classIdentifier} listeners={listeners}/>
-            <NumberField fieldName="Bonus" onInputChange={listeners.handleBonusChange} value={values.bonus} readOnly={false}/>
-            <NumberField fieldName="Quantity" onInputChange={listeners.handleMultiplierChange} value={values.quantity} onKeyDown={enterPressed} readOnly={false}/>
+            <NumberField fieldName="Bonus Amount" onInputChange={listeners.handleBonusChange} value={values.bonus} readOnly={false}/>
+            <NumberField fieldName="Times Earned" onInputChange={listeners.handleMultiplierChange} value={values.quantity} onKeyDown={enterPressed} readOnly={false}/>
             <SubmitItemButton buttonText='Add Bonus' onClickAction={listeners.handleSubmitBonus}/>
         </div>
         

@@ -20,7 +20,7 @@ const payRates = {
         baseRate: KERMIT_BASE_RATE,
         overtimeRate: KERMIT_OVERTIME_RATE,
         weekendDifferential: KERMIT_WEEKEND_DIFFERENTIAL,
-        nightshiftDifferential: KERMIT_NIGHTSHIFT_DIFFERENTIAL,
+        nightShiftDifferential: KERMIT_NIGHTSHIFT_DIFFERENTIAL,
         taxRate: KERMIT_TAX_RATE,
     },
     mike: {

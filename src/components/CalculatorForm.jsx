@@ -17,14 +17,13 @@ function CalculatorForm() {
     const paycheckValues = {
         regularHours: currRegularHours,
         overtimeHours: currOvertimeHours,
-        nightShiftHours: currNightShiftHours,
+        nightShiftHours: Number(currNightShiftHours),
         weekendHours: currWeekendHours,
         bonusList: currBonusList,
     }
     const selectedId = "kermit";
     const pay = calculatePaycheck(selectedId , paycheckValues , payRates)
 
-    
 
 
     const handleRegularHoursChange = (e) => {
@@ -117,11 +116,7 @@ function CalculatorForm() {
                 <legend className="form-header">Gross and Net Pay</legend>
                 <NumberField fieldName="Gross Pay" value={pay.currGrossPay} readOnly={true} />
                 <NumberField fieldName="Net Pay" value={pay.currNetPay} readOnly={true} />
-
             </fieldset>
-            
-            <NumberField fieldName="Net Pay" />
-            
         </form>
     )
 }

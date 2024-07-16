@@ -15,6 +15,7 @@ function NumberField({ fieldName , placeHolder , onInputChange , value , onKeyDo
                 onChange={onInputChange}
                 value={value}
                 onKeyDown={onKeyDown ? onKeyDown : null}
+                onWheel={(e) => e.target.blur()}
                 readOnly={readOnly}
             />
         </div>
@@ -26,7 +27,10 @@ NumberField.propTypes = {
     placeHolder: PropTypes.string,
     onInputChange: PropTypes.func,
     onKeyDown: PropTypes.func,
-    value: PropTypes.string,
+    value: PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.number,
+    ]),
     readOnly: PropTypes.bool.isRequired,
 
     

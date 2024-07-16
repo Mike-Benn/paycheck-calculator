@@ -1,16 +1,13 @@
 /*   Variables   */
 
 :root {
-    --generator-font-color: #36454F;
-    --generator-backgr-color: #FBFBFB;
-    --generator-border-color: #A0A0A0;
-    --submit-btn-backgr-color: #00A676;
-    --preview-backgr-color: #eaeaea;
+    
+    
     --list-item-color: #7600a6;
-    --preview-primary-element-color: #00457E;
-    --preview-backgr-color: #eaeaea;
-    --preview-list-item-color: #4d4d4d;
-    --overlay-button-backgr-color: #9a00d7;
+    --background-clr: #B6Eb96;
+    --primary-clr: #DC3A70;
+    --secondary-clr: #1686CD;
+   
 
 }
 
@@ -18,6 +15,10 @@
     margin: 0;
     padding: 0;
     font-family: Arial, Helvetica, sans-serif;
+    color: var(--secondary-clr);
+    
+    
+    
 }
 
 li {
@@ -37,10 +38,15 @@ input::-webkit-inner-spin-button {
     flex-direction: column;
     gap: 2rem;
     padding: 2rem 0rem;
+    background-color: var(--background-clr);
 }
 
 header {
     align-self: center;
+}
+
+fieldset {
+    border: 4px solid var(--secondary-clr);
 }
 
 .calculator-form {
@@ -58,19 +64,33 @@ header {
     gap: 1.5rem;
 }
 
+.form-header , .field-label , h1{
+    font-weight: bold;
+    color: var(--secondary-clr);
+}
+
 .field-label {
     position: absolute;
     transform: translate(1rem , -50%);
-    background-color: white;
-    padding: 2px 5px;
+    background-color: var(--background-clr);
+    padding: 0rem .25rem;
     
-    
+}
+
+legend {
+    padding: 0rem .4rem;
+}
+
+input:focus {
+    outline: none;
 }
 
 .text-input {
     padding: 1rem;
     border-radius: 5px;
-    border: solid 1px black;
+    border: solid 2.25px var(--secondary-clr);
+    background-color: var(--background-clr);
+    font-weight: bold;
     
 }
 
@@ -114,6 +134,19 @@ header {
     align-items: center;
     justify-content: center;
     cursor: pointer;
+}
+
+.submit-btn {
+    background-color: var(--secondary-clr);
+    color: var(--background-clr);
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.submit-btn:hover {
+    
 }
 
 .list-button-image {
