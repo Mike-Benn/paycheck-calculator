@@ -56,15 +56,20 @@ function CalculatorForm() {
     }
 
     const handleSubmitBonus = () => {
-        let bonus = {
-            id: uuidv4(),
-            amount: currBonus,
-            quantity: currBonusMultiplier,
+        if (currBonus && currBonusMultiplier) {
+            let bonus = {
+                id: uuidv4(),
+                amount: currBonus,
+                quantity: currBonusMultiplier,
+            }
+            
+            let updatedBonusList = currBonusList.concat([bonus]);
+            setCurrBonusList(updatedBonusList);
+            resetBonusForm();
+        } else {
+            alert("You can't do that!")
         }
         
-        let updatedBonusList = currBonusList.concat([bonus]);
-        setCurrBonusList(updatedBonusList);
-        resetBonusForm();
     }
 
     const handleDeleteBonus = (id) => {

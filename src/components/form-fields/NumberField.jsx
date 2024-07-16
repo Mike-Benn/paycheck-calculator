@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 
 
-function NumberField({ fieldName , placeHolder , onInputChange , value , onKeyDown , readOnly}) {
+function NumberField({ fieldName , placeHolder , onInputChange , value , onKeyDown , readOnly }) {
     let forVal = fieldName.split(' ').join('');
     return (
         <div className="field">
@@ -17,6 +17,7 @@ function NumberField({ fieldName , placeHolder , onInputChange , value , onKeyDo
                 onKeyDown={onKeyDown ? onKeyDown : null}
                 onWheel={(e) => e.target.blur()}
                 readOnly={readOnly}
+                
             />
         </div>
     );
@@ -32,6 +33,7 @@ NumberField.propTypes = {
         PropTypes.number,
     ]),
     readOnly: PropTypes.bool.isRequired,
+    
 
     
 
