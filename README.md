@@ -21,7 +21,7 @@ There are several things I will eventually add to this down the road but I'm goi
 
 ## Lessons Learned:
 
-I think maybe the biggest lesson learned is just the continuing understanding of how best to manage my components and how they are passed between each other.  Also I am trying to be cognizant of choosing identifiers for things that are considerably more concise than my last React project.
+I think maybe the biggest lesson learned is just the continued understanding of how best to manage my components and how they are passed between each other.  Also I am trying to be cognizant of choosing identifiers for things that are considerably more concise than my last React project.
 
 
 
