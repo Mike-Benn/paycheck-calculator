@@ -11,6 +11,7 @@ function CalculatorForm() {
     const [currOvertimeHours , setCurrOvertimeHours] = useState("");
     const [currNightShiftHours , setCurrNightShiftHours] = useState("");
     const [currWeekendHours , setCurrWeekendHours] = useState("");
+    const [currHolidayHours , setCurrHolidayHours] = useState("");
     const [currBonus , setCurrBonus] = useState("");
     const [currBonusMultiplier , setCurrBonusMultiplier] = useState("");
     const [currBonusList , setCurrBonusList] = useState([]);
@@ -19,6 +20,7 @@ function CalculatorForm() {
         overtimeHours: currOvertimeHours,
         nightShiftHours: Number(currNightShiftHours),
         weekendHours: currWeekendHours,
+        holidayHours: currHolidayHours,
         bonusList: currBonusList,
     }
     const selectedId = "kermit";
@@ -40,6 +42,10 @@ function CalculatorForm() {
 
     const handleWeekendHoursChange = (e) => {
         setCurrWeekendHours(e.target.value);
+    }
+
+    const handleHolidayHoursChange = (e) => {
+        setCurrHolidayHours(e.target.value);
     }
 
     const handleBonusChange = (e) => {
@@ -112,6 +118,7 @@ function CalculatorForm() {
                 <NumberField fieldName="Overtime Hours" onInputChange={handleOvertimeHoursChange} value={currOvertimeHours} readOnly={false}/>
                 <NumberField fieldName="Night Shift Hours" onInputChange={handleNightShiftHoursChange} value={currNightShiftHours} readOnly={false}/>
                 <NumberField fieldName="Weekend Hours" onInputChange={handleWeekendHoursChange} value={currWeekendHours} readOnly={false}/>
+                <NumberField fieldName="Holiday Hours" onInputChange={handleHolidayHoursChange} value={currHolidayHours} readOnly={false}/>
             </fieldset>
             <fieldset className="form-section">
                 <legend className="form-header">Bonuses</legend>

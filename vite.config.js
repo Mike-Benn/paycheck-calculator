@@ -9,5 +9,9 @@ export default defineConfig({
             react(),
             
   ],
+  test: {
+    environment: 'jsdom',
+    setupFiles: './tests/setup.js',
+  },
            
-})
+});
